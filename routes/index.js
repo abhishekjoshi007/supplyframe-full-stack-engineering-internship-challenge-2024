@@ -1,8 +1,35 @@
 var express = require("express");
+const HTTP = require("http");
+
 var router = express.Router();
 
 /* GET home page. */
+
+router.get("/movies", (req, res, next) => {
+  const path = "https://api.themoviedb.org/3/account/21124506/lists?page=1";
+
+  const headers = {
+    Accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmY3YjZmNTcyMjM3YjEwMWQ4MGU0ZjBjMzM4MzVhZiIsInN1YiI6IjY1ZmI5ZjI2N2Y2YzhkMDE3YzZiY2U5OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.J7IP5Y7HDRYyhx2OMWfo2geBVFjcbBxpH_ODMWR3jm0",
+  };
+
+  HTTP.request({ method: "GET", path, headers }, (response) => {
+    console.log(response);
+  });
+  // const data = await axios.get(url, { headers });
+
+  // res.json(data.json());
+  // .then((json) => console.log(json))
+  // .catch((err) => console.error("error:" + err));
+  // res.json({ status: 200, data });
+});
 router.get("/", function (req, res, next) {
+  // fetch(url, options)
+  //   .then((res) => res.json())
+  //   .then((json) => console.log(json))
+  //   .catch((err) => console.error("error:" + err));
+
   const items = [
     {
       title: "Supergirl",
@@ -210,6 +237,7 @@ router.get("/", function (req, res, next) {
       ageRating: 16,
     },
   ].filter((row) => row.image?.length);
+
   res.render("index", { title: "Express", items });
 });
 

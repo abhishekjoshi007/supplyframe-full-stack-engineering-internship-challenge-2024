@@ -27,7 +27,26 @@
     <link rel="stylesheet" href="/stylesheets/grid.css" />
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
+  <style>
+    .pagination-container {
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .pagination {
+      display: inline-block;
+    }
 
+    .pagination a {
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+    .pagination-active {
+      background-color: var(--main-color);
+    }
+  </style>
   <body>
     <div class="preloader">
       <div class="loader"></div>
@@ -52,10 +71,23 @@
     <!-- LATEST CARTOONS SECTION -->
     <%- include("./_layouts/_latest-cartoon.ejs") %>
     <!-- END LATEST CARTOONS SECTION -->
+    <div class="pagination-container">
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" class="pagination-active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+    </div>
 
     <!-- SPECIAL MOVIE SECTION -->
     <%- include('./_layouts/_special-movie-section') %>
     <!-- END SPECIAL MOVIE SECTION -->
+
     <!-- COPYRIGHT SECTION -->
     <div class="copyright">
       Copyright 2024
